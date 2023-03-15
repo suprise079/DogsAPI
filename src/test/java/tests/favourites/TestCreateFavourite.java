@@ -1,25 +1,23 @@
 package tests.favourites;
 
 import io.qameta.allure.Feature;
-import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
-import utils.Constants;
 import utils.Helpers;
 
 import static io.restassured.RestAssured.given;
 
 @Feature("Create favourite request in the dog api.")
-public class CreateFavourite {
+public class TestCreateFavourite {
 
     RequestSpecification requestSpec;
     JSONObject requestParams;
 
     @Before
     public void initialiseObjects(){
-        requestSpec = Helpers.getRequestSpec();
+        requestSpec = Helpers.getFavouriteRequestSpec();
 
         requestParams = new JSONObject();
         requestParams.put("image_id", "MTYwNj0NQ");

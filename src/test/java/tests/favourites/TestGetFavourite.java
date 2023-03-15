@@ -1,20 +1,12 @@
 package tests.favourites;
 
-import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import jdk.jfr.ContentType;
-import org.json.simple.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
-import utils.Constants;
 import utils.Helpers;
 
-import java.awt.*;
-
-import static io.restassured.RestAssured.authentication;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItems;
@@ -22,13 +14,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsMapContaining.hasKey;
 
 @Feature("The get favourite request in the dog api.")
-public class GetFavourite {
+public class TestGetFavourite {
 
     RequestSpecification requestSpec;
 
     @Before
     public void setup() {
-        requestSpec = Helpers.getRequestSpec();
+        requestSpec = Helpers.getFavouriteRequestSpec();
     }
 
 
