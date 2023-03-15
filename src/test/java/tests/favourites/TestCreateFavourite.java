@@ -5,7 +5,7 @@ import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
-import utils.Helpers;
+import utils.HTTPConfig;
 
 import static io.restassured.RestAssured.given;
 
@@ -17,7 +17,7 @@ public class TestCreateFavourite {
 
     @Before
     public void initialiseObjects(){
-        requestSpec = Helpers.getFavouriteRequestSpec();
+        requestSpec = HTTPConfig.getFavouriteRequestSpec();
 
         requestParams = new JSONObject();
         requestParams.put("image_id", "MTYwNj0NQ");

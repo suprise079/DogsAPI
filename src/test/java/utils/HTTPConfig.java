@@ -3,7 +3,7 @@ package utils;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 
-public class Helpers {
+public class HTTPConfig {
 
     private static RequestSpecification getRequestSpec(String path){
          return new RequestSpecBuilder()
@@ -21,6 +21,12 @@ public class Helpers {
     }
 
 
+    public static RequestSpecification getVotesRequestSpec() {
+        return getRequestSpec(Constants.VOTES_PATH);
+    }
 
 
+    public static RequestSpecification getCategoriesRequestSpec() {
+        return getRequestSpec(Constants.CATEGORIES_PATH);
+    }
 }

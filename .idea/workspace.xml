@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="487506a8-0c27-4be3-a14a-98025491e18c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/favourites/DeleteFavourite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/votes/GetVotes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/categories/TestGetCategories.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/votes/TestCreateVote.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/votes/TestDeleteVote.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/votes/TestGetVotes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/utils/Requests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/favourites/CreateFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/favourites/TestCreateFavourite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/favourites/GetFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/favourites/GetFavourite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/favourites/TestCreateFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/favourites/TestCreateFavourite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/favourites/TestDeleteFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/favourites/TestDeleteFavourite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/favourites/TestGetFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/favourites/TestGetFavourite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/votes/GetVotes.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/Helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/HTTPConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,14 +53,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />

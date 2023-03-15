@@ -5,7 +5,7 @@ import io.qameta.allure.Story;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 import org.junit.Test;
-import utils.Helpers;
+import utils.HTTPConfig;
 
 import static io.restassured.RestAssured.given;
 
@@ -15,7 +15,7 @@ public class TestDeleteFavourite {
 
     @Before
     public void initialiseObjects(){
-        requestSpec = Helpers.getFavouriteRequestSpec();
+        requestSpec = HTTPConfig.getFavouriteRequestSpec();
     }
 
     @Test

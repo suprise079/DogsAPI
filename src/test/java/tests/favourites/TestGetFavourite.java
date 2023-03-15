@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 import org.junit.Test;
-import utils.Helpers;
+import utils.HTTPConfig;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -20,7 +20,7 @@ public class TestGetFavourite {
 
     @Before
     public void setup() {
-        requestSpec = Helpers.getFavouriteRequestSpec();
+        requestSpec = HTTPConfig.getFavouriteRequestSpec();
     }
 
 
