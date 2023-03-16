@@ -2,10 +2,12 @@ package tests.votes;
 
 import data.APIData;
 import data.DataProviders;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.DisplayName;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -31,6 +33,8 @@ public class TestGetVotes {
 
 
     @Test(dataProvider = "voteSubIdData", dataProviderClass = DataProviders.class)
+    @Description("This test will get all the votes for a given sub id.")
+    @DisplayName("Test get votes by sub id endpoint")
     public void get_votes_with_sub_id(String subId) {
         Response response = given()
                 .when()
@@ -46,6 +50,8 @@ public class TestGetVotes {
     }
 
     @Test
+    @Description("This test will get all the votes for a given vote id.")
+    @DisplayName("Test get votes by vote id endpoint")
     public void get_votes_with_vote_id() {
         int ExistingVoteId = APIData.GetVoteId();
         Response response = Requests.getVote(ExistingVoteId);
@@ -57,6 +63,8 @@ public class TestGetVotes {
     }
 
     @Test
+    @Description("This test will get all the votes for a given image id.")
+    @DisplayName("Test get votes by image id endpoint")
     public void get_votes_with_non_existing_id() {
         int InvalidVoteId = 38579387;
         Response response = Requests.getVote(InvalidVoteId);
@@ -67,6 +75,8 @@ public class TestGetVotes {
     }
 
     @Test
+    @Description("This test will get all the votes for a given image id.")
+    @DisplayName("Test get votes by image id endpoint")
     public void get_votes_with_invalid_id() {
         int InvalidVoteId = -10;
         Response response = Requests.getVote(InvalidVoteId);

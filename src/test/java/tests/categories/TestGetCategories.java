@@ -4,6 +4,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.DisplayName;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.HTTPConfig;
@@ -24,6 +25,7 @@ public class TestGetCategories {
 
     @Test
     @Description("This test will get all the categories from the dog api.")
+    @DisplayName("Test get all categories endpoint")
     public void get_all_categories(){
         Response response = given()
                 .when()
