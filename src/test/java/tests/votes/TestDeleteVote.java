@@ -1,5 +1,7 @@
 package tests.votes;
 
+import data.DataProviders;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -7,6 +9,9 @@ import org.testng.annotations.Test;
 import utils.HTTPConfig;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 
 public class TestDeleteVote {
 
@@ -17,28 +22,21 @@ public class TestDeleteVote {
         requestSpec = HTTPConfig.getVotesRequestSpec();
     }
 
-    @DataProvider(name="voteIdData")
-    public Object[][] getVoteIdData(){
-        //provide a second element in each array that will expalin the data
-        String[][] data = {
-                {"145526", "Testing with valid existing data"},
-                {"145526", "Testing with alredy deleted Id"},
-                {"", "Testing with empty vote id"},
-                {"id01", "Testing with string instead of integer"}
-        };
-        return data;
-    }
 
-    @Test(dataProvider = "voteIdData")
-    public void delete_vote_by_id(String vote_id, String description){
-        given()
+
+    @Test(dataProvider = "voteIdData", dataProviderClass = DataProviders.class)
+    public void delete_vote_by_id(String vote_id,String code, String expectedOutput){
+        Response response = given()
                 .when()
                 .spec(requestSpec)
                 .and()
                 .basePath("votes/" + vote_id)
-                .delete()
-                .then().log().all()
-                .statusCode(200);
+                .delete();
+
+        //Tests assertions
+        assertThat(response.getStatusCode(), equalTo(Integer.valueOf(code)));
+        assertThat(response.getBody().asString(), containsString(expectedOutput));
+
     }
 
 }

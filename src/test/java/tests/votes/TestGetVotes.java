@@ -1,14 +1,25 @@
 package tests.votes;
 
+import data.APIData;
+import data.DataProviders;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.Constants;
 import utils.HTTPConfig;
+import utils.Requests;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.collection.IsMapContaining.hasKey;
 
+
+@Feature("The get votes requests in the dog api.")
 public class TestGetVotes {
 
     RequestSpecification requestSpec;
@@ -18,54 +29,54 @@ public class TestGetVotes {
         requestSpec = HTTPConfig.getVotesRequestSpec();
     }
 
-    @DataProvider(name = "subIdData")
-    private Object[][] getSubIdData(){
-        //provide a second element in each array that will expalin the data
-        String[][] data = {{"my-user-1234"}, {"Invalid"}, {""}};
-        return data;
-    }
 
-    @DataProvider(name = "voteIdData")
-    public Object[][] getVoteIdData(){
-        //provide a second element in each array that will expalin the data
-        String[][] data = {{"145525", "valid vote ID"},
-                {"38579387589", "Non-Existent ID"},
-                {"kewjrfhjkdsfh", "Invalid ID"}};
-        return data;
-    }
-
-    @Test(dataProvider = "subIdData")
+    @Test(dataProvider = "voteSubIdData", dataProviderClass = DataProviders.class)
     public void get_votes_with_sub_id(String subId) {
-        given()
+        Response response = given()
                 .when()
                 .spec(requestSpec)
                 .and()
                 .param("sub_id", subId)
-                .get()
-                .then()
-                .log().all()
-                .statusCode(200);
+                .get();
 
-        //Write a test to get votes with sub_id
-        //Put assertions for all expected data using hamcrest matchers
+        //Test assertions
+        assertThat(response.getStatusCode(), equalTo(200));
+        response.then().body("size()", greaterThan(0));
+
     }
 
-    @Test (dataProvider = "voteIdData")
-    public void get_votes_with_vote_id(String voteId, String description) {
-        given()
-                .when()
-                .spec(requestSpec)
-                .and()
-                .basePath(Constants.VOTES_PATH + voteId)
-                .get()
-                .then()
-                .log().all()
-                .statusCode(400);
+    @Test
+    public void get_votes_with_vote_id() {
+        int ExistingVoteId = APIData.GetVoteId();
+        Response response = Requests.getVote(ExistingVoteId);
 
-        //Write a test to get votes with invalid limit
-        //Put assertions for all expected data using hamcrest matchers
-        //put the description in the assertion message
+        //Test assertions
+        assertThat(response.getStatusCode(), equalTo(200));
+        assertThat(response.jsonPath().get("id"), equalTo(ExistingVoteId));
+        assertThat(response.jsonPath().get(), allOf(hasKey("id"), hasKey("image_id"), hasKey("sub_id"), hasKey("value"), hasKey("created_at")));
     }
+
+    @Test
+    public void get_votes_with_non_existing_id() {
+        int InvalidVoteId = 38579387;
+        Response response = Requests.getVote(InvalidVoteId);
+
+        //Test assertions
+        assertThat(response.getStatusCode(), equalTo(404));
+        assertThat(response.getBody().asString(), equalTo("NOT_FOUND"));
+    }
+
+    @Test
+    public void get_votes_with_invalid_id() {
+        int InvalidVoteId = -10;
+        Response response = Requests.getVote(InvalidVoteId);
+
+        //Test assertions
+        assertThat(response.getStatusCode(), equalTo(404));
+        assertThat(response.getBody().asString(), equalTo("INVALID_ID"));
+    }
+
+
 
 
 

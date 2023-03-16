@@ -43,10 +43,13 @@ public class TestGetFavourite {
                 .when()
                 .spec(requestSpec)
                 .and()
-                .basePath("favourites/1")
+                .basePath("favourites/"+"1")
                 .get();
         response.then().log().all();
+
         assertThat(response.getStatusCode(), equalTo(200));
     }
+
+
 
 }

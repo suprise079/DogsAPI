@@ -7,4 +7,5 @@ public class Constants {
 
     public static final String VOTES_PATH = "votes/";
     public static final String CATEGORIES_PATH = "categories/";
+    public static final String BREEDS_PATH = "breeds/";
 }
