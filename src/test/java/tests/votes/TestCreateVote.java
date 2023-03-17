@@ -34,12 +34,10 @@ public class TestCreateVote {
     @DisplayName("Test create vote endpoint")
     public void vote_image(String image_id, String sub_id, String value,String expectedStatus, String expectedOutput){
         JSONObject requestParams = new JSONObject();
-        if (image_id != "false")
-            requestParams.put("image_id", image_id);
-        if (sub_id != "false")
-            requestParams.put("sub_id", sub_id);
-        if (value != "false")
-            requestParams.put("value", value);
+
+        if (image_id != "false") requestParams.put("image_id", image_id);
+        if (sub_id != "false") requestParams.put("sub_id", sub_id);
+        if (value != "false") requestParams.put("value", value);
 
         Response response = given()
                 .when()

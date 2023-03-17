@@ -25,5 +25,16 @@ public class APIData {
         return response.jsonPath().get("[0][\"id\"]");
     }
 
+    public static int GetFavouriteId(){
+        Response response = given()
+                .when()
+                .spec(HTTPConfig.getFavouriteRequestSpec())
+                .get();
+
+        return response.jsonPath().get("[0][\"id\"]");
+    }
+
+
+
 
 }

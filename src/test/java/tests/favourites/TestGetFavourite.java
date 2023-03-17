@@ -1,10 +1,12 @@
 package tests.favourites;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import utils.HTTPConfig;
 
 import static io.restassured.RestAssured.given;
@@ -25,6 +27,8 @@ public class TestGetFavourite {
 
 
     @Test
+    @Description("This test will get all the favourites for a given sub id.")
+    @DisplayName("Test get favourite with sub id")
     public void get_favourite_with_sub() {
         //put parameters to test with different sub_ids
         Response response = given()
@@ -37,6 +41,8 @@ public class TestGetFavourite {
     }
 
     @Test
+    @Description("This test will get all the favourites for a given favourite id.")
+    @DisplayName("Test get favourite with favourite id")
     public void get_favourite_with_favourite_id(){
         //put parameters to test with different favourite_id
         Response response = given()
@@ -49,7 +55,5 @@ public class TestGetFavourite {
 
         assertThat(response.getStatusCode(), equalTo(200));
     }
-
-
 
 }

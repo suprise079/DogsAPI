@@ -1,6 +1,7 @@
 package tests.breeds;
 
 import data.APIData;
+import data.DataProviders;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -32,26 +33,8 @@ public class TestGetBreeds {
         requestSpec = HTTPConfig.getBreedsRequestSpec();
     }
 
-    @DataProvider(name="breedData")
-    @Description("This data provider will provide the limit and page values for the get breeds request.")
-    @DisplayName("Breed data provider")
-    public Object[][] getBreedData(){
 
-        String[][] data = {
-                {"10", "0", "Testing with valid data"},
-                {"10", "100", "Testing with out of range page"},
-                {"-1", "0", "Testing with negative limit"},
-                {"0", "0", "Testing with zero limit"},
-                {"", "0", "Testing with empty limit"},
-                {"10", "-1", "Testing with negative page"},
-                {"10", "", "Testing with empty page"},
-                {"", "", "Testing with empty limit and page"},
-        };
-
-        return data;
-    }
-
-    @Test (dataProvider = "breedData")
+    @Test (dataProvider = "breedData", dataProviderClass = DataProviders.class)
     @Description("This test will get all the breeds from the dog api, using breedData data provider.")
     @DisplayName("Test get all breeds endpoint")
     public void get_all_breeds(String limit, String page, String description){

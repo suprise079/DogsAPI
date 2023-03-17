@@ -2,6 +2,7 @@ package utils;
 
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.json.simple.JSONObject;
 
 import static io.restassured.RestAssured.given;
 
@@ -19,5 +20,14 @@ public class Requests {
                     .and()
                     .basePath(Constants.VOTES_PATH + voteId)
                     .get();
+        }
+
+        public static Response createFavourite(JSONObject requestBody){
+            return given()
+                    .when()
+                    .spec(HTTPConfig.getFavouriteRequestSpec())
+                    .and()
+                    .body(requestBody.toJSONString())
+                    .post();
         }
 }

@@ -1,49 +1,47 @@
 package tests.favourites;
 
+import data.DataProviders;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import utils.HTTPConfig;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
+@Feature("The delete favourite requests in the dog api.")
 public class TestDeleteFavourite {
 
     RequestSpecification requestSpec;
 
-    @Before
+    @BeforeClass
     public void initialiseObjects(){
         requestSpec = HTTPConfig.getFavouriteRequestSpec();
     }
 
-    @Test
+    @Test(dataProvider = "favouriteIdData", dataProviderClass = DataProviders.class)
     @Story("Delete favourite with id")
-    @Description("Delete favourite dog using an existing id")
-    public void delete_with_id(){
-        String favouriteId = "70406";
-        given()
+    @Description("Testing the delte favourite endPoint with id using parameterized tests")
+    @DisplayName("Test delete favourite with ID")
+    public void delete_with_id(String favourite_id,String code, String expectedOutput){
+
+        Response response = given()
                 .when()
                 .spec(requestSpec)
                 .and()
-                .basePath("favourites/" + favouriteId)
-                .delete()
-                .then().log().all()
-                .statusCode(200);
+                .basePath("favourites/" + favourite_id)
+                .delete();
+
+        //Tests assertions
+        assertThat(response.getStatusCode(), equalTo(Integer.valueOf(code)));
+        assertThat(response.getBody().asString(), containsString(expectedOutput));
     }
 
-    @Test
-    @Description("Delete favourite dog using a non-existing id")
-    public void delete_with_non_existing_id(){
-        String favouriteId = "123456";
-        given()
-                .when()
-                .spec(requestSpec)
-                .and()
-                .basePath("favourites/" + favouriteId)
-                .delete()
-                .then().log().all()
-                .statusCode(400);
-    }
 }
