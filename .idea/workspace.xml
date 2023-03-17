@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="487506a8-0c27-4be3-a14a-98025491e18c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/APIData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/APIData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/DataProviders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/DataProviders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/breeds/TestGetBreeds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/breeds/TestGetBreeds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/favourites/TestCreateFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/favourites/TestCreateFavourite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/favourites/TestDeleteFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/favourites/TestDeleteFavourite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/votes/TestCreateVote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/votes/TestCreateVote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/Requests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/Requests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
